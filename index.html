@@ -1,0 +1,132 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listings - Partslis.NET</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 class="site-title">Partslis.NET</h1>
+
+    <div class="container">
+        <!-- Discord Button Container -->
+        <div class="discord-join-container">
+            <a href="https://discord.gg/G55QvX9V43" target="_blank" class="discord-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="discord-icon"><path d="M19.54 5.23c-.88-.45-1.85-.78-2.87-.97.05.21.1.43.13.65l-.1 1.51c-1.46-.45-3.06-.45-4.52 0l-.1-1.51c.03-.22.08-.44.13-.65-.92.19-1.89.52-2.77.97C3.53 7.41 2.59 10.5 2.5 13.7c1.03 1.23 2.4 2.08 4.04 2.49.5-.52.91-1.13 1.24-1.82-.54-.21-.98-.48-1.38-.78.14-.08.28-.16.41-.25a14.93 14.93 0 0 0 5.96 0c.13.09.27.17.41.25-.4.3-.84.57-1.38.78.33.69.74 1.3 1.24 1.82 1.64-.41 3.01-1.26 4.04-2.49.1-3.2-.83-6.29-2.46-8.47zm-8.7 8.17c-.94 0-1.71-.82-1.71-1.83s.77-1.83 1.71-1.83 1.71.82 1.71 1.83-.77 1.83-1.71 1.83zm4.33 0c-.94 0-1.71-.82-1.71-1.83s.77-1.83 1.71-1.83 1.71.82 1.71 1.83-.77 1.83-1.71 1.83z"/></svg>
+                Join our Discord
+            </a>
+        </div>
+
+        <!-- Reputable Products Section -->
+        <section class="product-section reputable">
+            <header>
+                <h1>
+                    REPUTABLE PRODUCTS
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle header-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                </h1>
+                <p>Products listed below are reputable products. This does not mean that they will remain reputable and or undetected.</p>
+            </header>
+            <div class="table-wrapper"> 
+                <table class="products-table">
+                    <thead>
+                        <tr>
+                            <th class="col-id">📄<br>ID</th>
+                            <th class="col-name">⭐<br>PRODUCT<br>NAME</th>
+                            <th class="col-release">📅<br>RELEASE<br>DATE</th>
+                            <th class="col-detection">⛔<br>LAST<br>DETECTION</th>
+                            <th class="col-score">🛡️<br>TRUST<br>SCORE</th>
+                            <th class="col-type">🔷<br>TYPE</th>
+                            <th class="col-unc">📈<br>UNC<br>LEVEL</th>
+                            <th class="col-resellers">💲<br>RESELLERS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="product-data">
+                        <tr><td colspan="8">Loading reputable products...</td></tr> 
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Untrusted Products Section -->
+        <section class="product-section untrusted">
+             <header class="untrusted-header">
+                <h1>
+                    UNTRUSTED PRODUCTS
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle header-icon untrusted-icon"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                </h1>
+                <p>Products listed below are either are really new, generally untrusted within the community or in rare cases an overall bad product.</p>
+            </header>
+            <div class="table-wrapper">
+                <table class="products-table untrusted-table">
+                    <thead>
+                        <tr>
+                            <th class="col-id">📄<br>ID</th>
+                            <th class="col-name">⭐<br>PRODUCT<br>NAME</th>
+                            <th class="col-release">📅<br>RELEASE<br>DATE</th>
+                            <th class="col-detection">⛔<br>LAST<br>DETECTION</th>
+                            <th class="col-score">🛡️<br>TRUST<br>SCORE</th>
+                            <th class="col-type">🔷<br>TYPE</th>
+                            <th class="col-unc">📈<br>UNC<br>LEVEL</th>
+                            <th class="col-resellers">💲<br>RESELLERS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="untrusted-product-data">
+                        <tr><td colspan="8">Loading untrusted products...</td></tr> 
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Unreleased Products Section -->
+        <section class="product-section unreleased">
+            <header class="unreleased-header">
+                <h1>
+                    UNRELEASED PRODUCTS
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock header-icon unreleased-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </h1>
+                <p>Products listed below are not yet released to the public.</p>
+            </header>
+             <div class="table-wrapper">
+                <table class="products-table unreleased-table">
+                    <thead>
+                        <tr>
+                            <th class="col-id">📄<br>ID</th>
+                            <th class="col-name">⭐<br>PRODUCT<br>NAME</th>
+                            <th class="col-release">📅<br>RELEASE<br>DATE</th>
+                            <th class="col-detection">⛔<br>LAST<br>DETECTION</th>
+                            <th class="col-score">🛡️<br>TRUST<br>SCORE</th>
+                            <th class="col-type">🔷<br>TYPE</th>
+                            <th class="col-unc">📈<br>UNC<br>LEVEL</th>
+                            <th class="col-resellers">💲<br>RESELLERS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="unreleased-product-data">
+                        <tr><td colspan="8">Loading unreleased products...</td></tr> 
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="waves-container">
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(6, 182, 212, 0.7)" /> 
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(14, 184, 166, 0.5)" /> 
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(16, 185, 129, 0.3)" /> 
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="rgb(31, 41, 55)" /> 
+            </g>
+        </svg>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
