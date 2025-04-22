@@ -12,12 +12,16 @@
     <h1 class="site-title">Partslis.NET</h1>
 
     <div class="container">
-        <!-- Discord Button Container -->
-        <div class="discord-join-container">
-            <a href="https://discord.gg/G55QvX9V43" target="_blank" class="discord-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="discord-icon"><path d="M19.54 5.23c-.88-.45-1.85-.78-2.87-.97.05.21.1.43.13.65l-.1 1.51c-1.46-.45-3.06-.45-4.52 0l-.1-1.51c.03-.22.08-.44.13-.65-.92.19-1.89.52-2.77.97C3.53 7.41 2.59 10.5 2.5 13.7c1.03 1.23 2.4 2.08 4.04 2.49.5-.52.91-1.13 1.24-1.82-.54-.21-.98-.48-1.38-.78.14-.08.28-.16.41-.25a14.93 14.93 0 0 0 5.96 0c.13.09.27.17.41.25-.4.3-.84.57-1.38.78.33.69.74 1.3 1.24 1.82 1.64-.41 3.01-1.26 4.04-2.49.1-3.2-.83-6.29-2.46-8.47zm-8.7 8.17c-.94 0-1.71-.82-1.71-1.83s.77-1.83 1.71-1.83 1.71.82 1.71 1.83-.77 1.83-1.71 1.83zm4.33 0c-.94 0-1.71-.82-1.71-1.83s.77-1.83 1.71-1.83 1.71.82 1.71 1.83-.77 1.83-1.71 1.83z"/></svg>
+        <!-- Button Container -->
+        <div class="top-button-container">
+            <a href="https://discord.gg/G55QvX9V43" target="_blank" class="top-button discord-button">
+                <img src="/discord-logo.png" alt="Discord Logo" class="discord-icon">
                 Join our Discord
             </a>
+             <button class="top-button changelog-button" id="changelog-button">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text changelog-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                 Changelog (V1.20)
+             </button>
         </div>
 
         <!-- Reputable Products Section -->
@@ -110,6 +114,59 @@
             </div>
         </section>
 
+        <!-- External Cheats Section -->
+        <section class="product-section external">
+            <header class="external-header">
+                <h1>
+                    EXTERNAL CHEATS
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-target header-icon external-icon"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                </h1>
+                <p>Products listed below are external cheats. Information will be added soon.</p>
+            </header>
+             <div class="table-wrapper">
+                <table class="products-table external-table">
+                    <thead>
+                        <tr>
+                            <th class="col-id">📄<br>ID</th>
+                            <th class="col-name-external">⭐<br>PRODUCT<br>NAME</th>
+                            <th class="col-release">📅<br>RELEASE<br>DATE</th>
+                            <th class="col-detection">⛔<br>LAST<br>DETECTION</th>
+                            <th class="col-score">🛡️<br>TRUST<br>SCORE</th>
+                            <th class="col-stream-proof">🎥<br>STREAM<br>PROOF</th>
+                            <th class="col-type-external">🔷<br>TYPE</th>
+                            <th class="col-cpu">💻<br>CPU<br>SUPPORT</th>
+                            <th class="col-playstyle">🤖<br>PLAY<br>STYLE</th>
+                            <th class="col-resellers">💲<br>RESELLERS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="external-cheat-data">
+                        <tr><td colspan="10">Loading external cheats...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Changelog Modal -->
+    <div id="changelog-modal-overlay" class="modal-overlay">
+        <div class="modal-content changelog-modal-content">
+            <button id="changelog-close-button" class="changelog-close-button">&times;</button>
+            <h2 class="changelog-title">Changelog (V1.20)</h2>
+            <div class="changelog-body">
+                <ul>
+                    <li>Added interactive warnings when clicking links for Untrusted Products.</li>
+                    <li>Added a new "External Cheats" section with initial product listings.</li>
+                    <li>Moved Ronix and VegaX to Reputable Products and updated scores.</li>
+                    <li>Increased trust score for Potassium within Untrusted Products.</li>
+                    <li>Moved Ascendant V2 to Untrusted Products.</li>
+                    <li>Removed Argon (Reason: Scam concerns).</li>
+                    <li>Added this Changelog modal feature.</li>
+                    <li>Implemented general code refactoring and styling improvements across the site.</li>
+                    <li>Updated various product details (release dates, detection status, etc.).</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <div class="waves-container">
@@ -127,6 +184,6 @@
         </svg>
     </div>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>

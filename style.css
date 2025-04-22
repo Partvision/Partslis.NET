@@ -86,6 +86,10 @@ header h1 {
     color: #fbbf24; /* Amber accent for unreleased header */
 }
 
+.external-header h1 {
+    color: #a78bfa; /* Violet accent for external header */
+}
+
 .header-icon {
     stroke: #6ee7b7; /* Match header text color */
 }
@@ -98,6 +102,10 @@ header h1 {
     stroke: #fbbf24; /* Match unreleased header text color */
 }
 
+.external-icon {
+    stroke: #a78bfa; /* Match external header text color */
+}
+
 header p {
     font-size: 0.9rem;
     color: #9ca3af; /* Medium gray */
@@ -106,39 +114,69 @@ header p {
     margin-right: auto;
 }
 
-/* Discord Button Container */
-.discord-join-container {
-    text-align: center;
-    margin-bottom: 2rem; /* Space below the button */
+/* Top Button Container */
+.top-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem; /* Space between buttons */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    margin-bottom: 2rem; /* Space below the buttons */
 }
 
-/* Discord Button Style */
-.discord-button {
+/* Base Top Button Style */
+.top-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 12px 24px;
-    background: linear-gradient(to right, #7289da, #5865f2); /* Discord blurple gradient */
     color: #ffffff;
     font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
+    border: none; /* Base reset for button element */
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+    cursor: pointer;
+}
+
+.top-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Discord Button Specific Style */
+.discord-button {
+    background: linear-gradient(to right, #7289da, #5865f2); /* Discord blurple gradient */
 }
 
 .discord-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
     background: linear-gradient(to right, #5865f2, #4a59d1); /* Slightly darker on hover */
 }
 
 .discord-icon {
-    width: 20px; /* Adjust size as needed */
+    width: 24px; /* Adjust size as needed */
+    height: 24px;
+    margin-right: 10px;
+    vertical-align: middle; /* Align image nicely with text */
+    border-radius: 4px; /* Optional: slightly round the logo corners */
+}
+
+/* Changelog Button Specific Style */
+.changelog-button {
+    background: linear-gradient(to right, #374151, #4b5563); /* Gray gradient */
+}
+
+.changelog-button:hover {
+    background: linear-gradient(to right, #4b5563, #6b7280); /* Lighter gray on hover */
+}
+
+.changelog-icon {
+    width: 20px;
     height: 20px;
     margin-right: 10px;
-    fill: currentColor; /* Make icon color match text */
+    stroke: #d1d5db; /* Light gray stroke */
 }
 
 /* Table Wrapper for Scrolling */
@@ -173,14 +211,26 @@ header p {
 }
 
 /* Define Column Widths */
-.col-id { width: 6%; }
-.col-name { width: 22%; }
-.col-release { width: 12%; }
-.col-detection { width: 12%; }
-.col-score { width: 10%; }
+.col-id { width: 5%; }
+.col-name { width: 20%; }
+.col-release { width: 10%; }
+.col-detection { width: 11%; }
+.col-score { width: 9%; }
 .col-type { width: 15%; }
 .col-unc { width: 10%; }
 .col-resellers { width: 10%; }
+/* Add widths for external table columns */
+.col-name-external { width: 18%; }
+.col-stream-proof { width: 10%; }
+.col-type-external { width: 9%; }
+.col-cpu { width: 10%; }
+.col-playstyle { width: 10%; }
+/* Adjust other widths slightly if needed */
+.external-table .col-id { width: 5%; }
+.external-table .col-release { width: 10%; }
+.external-table .col-detection { width: 10%; }
+.external-table .col-score { width: 8%; }
+.external-table .col-resellers { width: 10%; }
 
 /* Table Body */
 .products-table tbody tr {
@@ -208,13 +258,15 @@ header p {
 }
 
 /* Loading/Error Row */
-.products-table td[colspan="8"] {
+.products-table td[colspan="8"],
+.products-table td[colspan="10"] { 
     text-align: center;
     font-style: italic;
     color: #9ca3af;
     padding: 2rem;
 }
-.products-table td[colspan="8"].error-message {
+.products-table td[colspan="8"].error-message,
+.products-table td[colspan="10"].error-message { 
     color: #f87171; /* Red for errors */
     font-weight: 500;
 }
@@ -260,6 +312,18 @@ header p {
 }
 .unreleased_color a:hover {
     color: #fde68a; /* Lighter amber */
+    text-decoration: underline;
+}
+
+/* External Cheat Links */
+.external_color a {
+    color: #c4b5fd; /* Light Violet for external links */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+.external_color a:hover {
+    color: #ddd6fe; /* Lighter Violet */
     text-decoration: underline;
 }
 
@@ -316,7 +380,8 @@ header p {
 .score-50 { background-color: #991b1b; } /* Red 800 */
 
 /* Resellers Check/Cross */
-.products-table td:last-child { /* Target last column (resellers) */
+.products-table td:last-child, 
+.external-table td:nth-child(6) {
     font-size: 1.2em;
     font-weight: bold;
 }
@@ -383,6 +448,148 @@ header p {
     }
 }
 
+/* Custom Confirmation Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.modal-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    background-color: #1f2937; /* Dark background for modal */
+    color: #d1d5db; /* Light text */
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px; /* Limit width */
+    width: 90%; /* Responsive width */
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.visible .modal-content {
+    transform: scale(1);
+}
+
+/* Confirmation Modal Specifics */
+.modal-content h2 {
+    color: #f87171; /* Red warning color */
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    margin-bottom: 25px;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Space between buttons */
+}
+
+.modal-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.modal-button:active {
+    transform: scale(0.98);
+}
+
+.modal-button-yes {
+    background-color: #ef4444; /* Red for proceed */
+    color: white;
+}
+
+.modal-button-yes:hover {
+    background-color: #dc2626; /* Darker red on hover */
+}
+
+.modal-button-no {
+    background-color: #4b5563; /* Gray for cancel */
+    color: white;
+}
+
+.modal-button-no:hover {
+    background-color: #6b7280; /* Lighter gray on hover */
+}
+
+/* Changelog Modal Specific Styles */
+.changelog-modal-content {
+    max-width: 600px; /* Wider for changelog */
+    text-align: left; /* Align text left */
+    position: relative; /* For close button positioning */
+    padding-top: 40px; /* Make space for close button */
+}
+
+.changelog-title {
+    color: #6ee7b7; /* Teal title */
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    text-align: center; /* Center the title */
+}
+
+.changelog-body {
+    max-height: 60vh; /* Limit height and allow scrolling if needed */
+    overflow-y: auto; /* Enable vertical scroll */
+    padding-right: 10px; /* Space for scrollbar */
+}
+
+.changelog-body ul {
+    list-style: disc; /* Use standard bullet points */
+    padding-left: 25px; /* Indent list */
+    color: #d1d5db;
+}
+
+.changelog-body li {
+    margin-bottom: 12px; /* Space between items */
+    line-height: 1.5;
+}
+
+.changelog-close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #9ca3af; /* Medium gray */
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.changelog-close-button:hover {
+    color: #e5e7eb; /* Lighter gray */
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     body {
@@ -417,8 +624,8 @@ header p {
         font-size: 0.75rem;
         min-width: 50px;
     }
-    /* Discord Button Responsive */
-    .discord-button {
+    /* Top Button Responsive */
+    .top-button { 
         padding: 10px 20px;
         font-size: 0.9rem;
     }
@@ -426,6 +633,11 @@ header p {
         width: 18px;
         height: 18px;
         margin-right: 8px;
+    }
+    .changelog-icon {
+         width: 16px;
+         height: 16px;
+         margin-right: 8px;
     }
     /* Added Wave Responsive */
     .waves-container {
@@ -435,5 +647,27 @@ header p {
     .waves {
         height: 10vh;
         min-height: 60px;
+    }
+    /* Adjust modal padding for smaller screens */
+    .modal-content {
+        padding: 20px 25px;
+        padding-top: 45px; /* Ensure space for close button */
+    }
+    .changelog-modal-content {
+         max-width: 90%;
+    }
+    .changelog-title {
+        font-size: 1.4rem;
+    }
+    .changelog-body ul {
+        padding-left: 20px;
+    }
+    .changelog-body li {
+        margin-bottom: 10px;
+    }
+    .changelog-close-button {
+        top: 12px;
+        right: 12px;
+        font-size: 1.8rem;
     }
 }
